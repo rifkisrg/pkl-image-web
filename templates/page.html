@@ -1,0 +1,109 @@
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+        <title>Result</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg sticky-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <img src="{{url_for('static', filename='assets/Group 15.png')}}" width="120" style="margin-right: 40px;"></img>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a class="nav-item nav-link active navbar-margin" href="{{url_for('home')}}">Home<span class="sr-only">(current)</span></a></li>
+                    <li>
+                        <a class="nav-item nav-link navbar-margin" href="#how-to-use">How to Use</a>
+                    </li>
+                    <li>
+                        <a class="nav-item nav-link navbar-margin" href="{{url_for('about')}}">About Us</a>
+                    </li>
+                </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="result">
+            <div class="container">
+                <div class="row align-items-center padskuy">
+                    <div class="col-md-6">
+                        <div class="text-center">
+                            <div>
+                                <img src="{{ url_for('static', filename='image/'+filename) }}" alt="food image">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 align-middle"  style="color: #EFA455;">
+                        <h1>
+                            this food is called {{label}}
+                        </h1>
+                        <div class="mt-4" id="some-detail">
+                            <h5>if you want to know more about this food,</h5>
+                            <h5 class="mb-5">
+                                you can view more detail on <a href="{{label_for_link}}"><b>Wikipedia</b></a>
+                            </h5>
+                            <a class="button-start-search" style="color: #fff;" href="{{url_for('home')}}#searching">Search another</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="our-team">
+            <div class="container">
+                <div class="padding-120">
+                    <div class="text-center" style="margin-bottom: 56px">
+                        <h1>Our Team</h1>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-md-4">
+                            <img src="{{url_for('static', filename='assets/Rasyid.png')}}" alt="foto rasyid">
+                            <h4>Ibnu Rasyid Wijayanto</h4>
+                            <h6>Teknik Informatika 2017</h6>
+                        </div>
+                        <div class="col-md-4">
+                            <img src="{{url_for('static', filename='assets/Iki.png')}}" alt="foto rasyid">
+                            <h4>Rifki Akbar Siregar</h4>
+                            <h6>Teknik Informatika 2017</h6>
+                        </div>
+                        <div class="col-md-4">
+                            <img src="{{url_for('static', filename='assets/Natuy.png')}}" alt="foto rasyid">
+                            <h4>Nathania Sepliana</h4>
+                            <h6>Teknik Informatika 2017</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="at-footer" id="web-footer">
+            <div class="container">
+                <div class="row align-items-top">
+                    <div class="col-md-6">
+                        <img src="{{url_for('static', filename='assets/Group 15.png')}}" width="118"></img>
+                        <p style="margin: 20px 0; font-size: 12px">© All Rights Reserved</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h3>Navigation</h3>
+                        <ul style="list-style: none; padding-left: 0; color: #FFF;">
+                            <li><a href="{{url_for('home')}}">Home</a></li>
+                            <li><a href="{{url_for('home')}}#searching">Search Image</a></li>
+                            <li><a href="{{url_for('about')}}">About Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 80px">
+                    <p class="col-12 text-center">© PKL Daring Fakultas Ilmu Komputer</p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    </body>
+</html>

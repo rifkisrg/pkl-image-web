@@ -1,0 +1,96 @@
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+        <title>Result</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg sticky-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <img src="{{url_for('static', filename='assets/Group 15.png')}}" width="120" style="margin-right: 40px;"></img>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a class="nav-item nav-link active navbar-margin" href="{{url_for('home')}}">Home<span class="sr-only">(current)</span></a></li>
+                    <li>
+                        <a class="nav-item nav-link navbar-margin" href="#how-to-use">How to Use</a>
+                    </li>
+                    <li>
+                        <a class="nav-item nav-link navbar-margin" href="{{url_for('about')}}">About Us</a>
+                    </li>
+                </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="latar-belakang" style="padding: 40px 0px;">
+            <div class="container">
+                <h1 style="margin-bottom: 32px; color: #EFA455;">Latar Belakang</h1>
+                <p>
+                    She looked at her student wondering if she could ever get through. "You need to learn to think for yourself," she wanted to tell him. "Your friends are holding you back and bringing you down." But she didn't because she knew his friends were all that he had and even if that meant a life of misery, he would never give them up.
+                </p>
+                <p>
+                    She patiently waited for his number to be called. She had no desire to be there, but her mom had insisted that she go. She's resisted at first, but over time she realized it was simply easier to appease her and go. Mom tended to be that way. She would keep insisting until you wore down and did what she wanted. So, here she sat, patiently waiting for her number to be called.
+                </p>
+                <p>
+                    It was difficult to explain to them how the diagnosis of certain death had actually given him life. While everyone around him was in tears and upset, he actually felt more at ease. The doctor said it would be less than a year. That gave him a year to live, something he'd failed to do with his daily drudgery of a routine that had passed as life until then.
+                </p>
+            </div>
+        </div>
+        <div id="our-team">
+            <div class="container">
+                <div class="padding-120">
+                    <div class="text-center" style="margin-bottom: 56px">
+                        <h1 style="color: #EFA455;">Our Team</h1>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-md-4">
+                            <img src="{{url_for('static', filename='assets/Rasyid.png')}}" alt="foto rasyid">
+                            <h4>Ibnu Rasyid Wijayanto</h4>
+                            <h6>Teknik Informatika 2017</h6>
+                        </div>
+                        <div class="col-md-4">
+                            <img src="{{url_for('static', filename='assets/Iki.png')}}" alt="foto rasyid">
+                            <h4>Rifki Akbar Siregar</h4>
+                            <h6>Teknik Informatika 2017</h6>
+                        </div>
+                        <div class="col-md-4">
+                            <img src="{{url_for('static', filename='assets/Natuy.png')}}" alt="foto rasyid">
+                            <h4>Nathania Sepliana</h4>
+                            <h6>Teknik Informatika 2017</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="at-footer" id="web-footer">
+            <div class="container">
+                <div class="row align-items-top">
+                    <div class="col-md-6">
+                        <img src="{{url_for('static', filename='assets/Group 15.png')}}" width="118"></img>
+                        <p style="margin: 20px 0; font-size: 12px">© All Rights Reserved</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h3>Navigation</h3>
+                        <ul style="list-style: none; padding-left: 0; color: #FFF;">
+                            <li><a href="{{url_for('home')}}">Home</a></li>
+                            <li><a href="{{url_for('home')}}#searching">Search Image</a></li>
+                            <li><a href="{{url_for('about')}}">About Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 80px">
+                    <p class="col-12 text-center">© PKL Daring Fakultas Ilmu Komputer</p>
+                </div>
+            </div>
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    </body>
+</html>
