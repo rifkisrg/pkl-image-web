@@ -52,7 +52,7 @@ def upload():
     else:
         link = "https://en.wikipedia.org/wiki/" + label
 
-    return render_template("page.html", label=label, filename = file.filename, label_for_link = link)
+    return render_template("result.html", label=label, filename = file.filename, label_for_link = link)
 
 @app.route("/about")
 def about():

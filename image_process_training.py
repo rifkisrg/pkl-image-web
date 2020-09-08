@@ -15,7 +15,7 @@ import pandas as pd
 
 scaler = MinMaxScaler()
 
-df = pd.read_csv('image_feature.csv')
+df = pd.read_csv('image_feature3.csv')
 img_features = []
 for i in range(0, 1499):
     temp = []
@@ -24,17 +24,21 @@ for i in range(0, 1499):
         
     img_features.append(temp)
 
-train_feat_only = [[x for x in y[0:28]] for y in img_features]
+
+global len_feat
+len_feat = len(img_features[0])
+train_feat_only = [[x for x in y[:len_feat-1]] for y in img_features]
 scaled_train_feat = scaler.fit_transform(train_feat_only)
 rounded_scale = [[round(x, 5) for x in y] for y in scaled_train_feat]
 
 def get_color_feature(img):
-    means = np.mean(img)
-    stdev = np.std(img)
-    skewness = [skew(x) for x in img]
-    kurt = [kurtosis(x) for x in img]
+    color_feat = []
+    for x in img:
+        temp = [np.mean(x), np.std(x), skew(skew(x)), kurtosis(kurtosis(x))]
+        for t in temp:
+            color_feat.append(t)
 
-    return [means, stdev, skew(skew(skewness)), kurtosis(kurtosis(kurt))]
+    return color_feat
 
 def calc_glcm_all_agls(img, label, props, dists=[5], agls=[0, np.pi/4, np.pi/2, 3*np.pi/4], lvl=256, sym=True, norm=True):
     
@@ -60,6 +64,28 @@ def glcm_features(img, label="no label"):
         
     return glcm_feat
 
+def get_color_hist_val(img):
+    chan_hist = []
+    for chan in img:
+        hist = cv.calcHist([chan],[0],None,[256],[0,256])
+        norm_hist = cv.normalize(hist, hist).flatten()
+        res = [sum(norm_hist), np.mean(norm_hist), np.std(norm_hist)]
+        for r in res:
+            chan_hist.append(r)
+            
+    return chan_hist
+
+def hist_equal(img):
+    img_yuv = cv.cvtColor(img, cv.COLOR_BGR2YUV)
+
+    # equalize the histogram of the Y channel
+    img_yuv[:,:,0] = cv.equalizeHist(img_yuv[:,:,0])
+
+    # convert the YUV image back to RGB format
+    img_output = cv.cvtColor(img_yuv, cv.COLOR_YUV2BGR)
+    
+    return img_output
+
 # fungsi euclidean distance
 def euclidean_distance(input_data, dataset):
     distances = []
@@ -73,7 +99,7 @@ def euclidean_distance(input_data, dataset):
 def knn(k, datatest, datatrain):
     data = datatrain
     
-    data_without_label = [x[0:28] for x in data]
+    data_without_label = [x[:len_feat-1] for x in data]
     label_only = [x[-1] for x in data]
     
     distance = euclidean_distance(datatest, data_without_label)
@@ -102,7 +128,7 @@ def sort_by_cluster(data):
 
 def train(dataset):
     labels = [x[-1] for x in dataset]
-    feat_only = [[x for x in y[0:28]] for y in dataset]
+    feat_only = [[x for x in y[:len_feat-1]] for y in dataset]
     scaled = scaler.fit_transform(feat_only)
     rounded_scale = [[round(x, 5) for x in y] for y in scaled]
     kmeans = KMeans(n_clusters=150, max_iter=200).fit(rounded_scale)
@@ -132,10 +158,14 @@ def test(data_test):
     global img_features, rounded_scale
     train_result = train(img_features)
     
-    blurtest = cv.GaussianBlur(data_test, (5,5), 0)
-    feature_test = get_color_feature(blurtest) + glcm_features(data_test)
+    # resized = cv.resize(data_test, (500, 500))
+    histogram_equal = hist_equal(data_test)
 
-    normalized_test = normalize_test(train_feat_only, feature_test[0:28])
+    split_channel = cv.split(histogram_equal)
+
+    feature_test = get_color_hist_val(split_channel) + get_color_feature(split_channel) + glcm_features(data_test)
+
+    normalized_test = normalize_test(train_feat_only, feature_test[:len_feat-1])
 
     cluster_distance_test = euclidean_distance(normalized_test, train_result[1])
     nearest_cluster = cluster_distance_test.index(min(cluster_distance_test))
@@ -143,3 +173,5 @@ def test(data_test):
 
     return classification_result
 # print(pd.DataFrame(res))
+
+print(test(img_features[134]))
